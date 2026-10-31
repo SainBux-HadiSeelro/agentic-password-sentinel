@@ -6,22 +6,22 @@ from typing import Tuple
 import streamlit as st
 
 # ==============================================================================
-# 1. PAGE CONFIGURATION & AESTHETIC AGENTIC THEME (MOBILE RESPONSIVE)
+# 1. PAGE CONFIGURATION & AESTHETIC AGENTIC CYBER THEME (100% RESPONSIVE)
 # ==============================================================================
 st.set_page_config(
-    page_title="CipherSentinel AI | Autonomous Cryptographic Suite",
+    page_title="CipherSentinel AI | Autonomous Agentic Password Suite",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
 
-# High-Contrast, Aesthetic Cyber-Agent Theme with 100% Mobile Responsiveness
+# High-Contrast, Futuristic Agentic CSS with Irresistible Attention-Grabbing Floating Widget
 st.markdown(
     """
     <style>
     /* Global Base */
     .stApp {
-        background-color: #0b1120 !important;
+        background: radial-gradient(circle at 15% 15%, #0f172a 0%, #080d1a 60%, #030712 100%) !important;
         color: #ffffff !important;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
     }
@@ -43,39 +43,62 @@ st.markdown(
         color: #38bdf8 !important;
     }
 
-    /* Top Live Agent Badge */
-    .agent-status-badge {
+    /* Top Agentic Hero Banner */
+    .hero-agent-banner {
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(99, 102, 241, 0.15) 50%, rgba(168, 85, 247, 0.15) 100%);
+        border: 1px solid rgba(56, 189, 248, 0.4);
+        border-radius: 14px;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 25px rgba(14, 165, 233, 0.2);
+    }
+    .hero-banner-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .hero-agent-avatar {
+        font-size: 2rem;
+        filter: drop-shadow(0 0 10px #38bdf8);
+        animation: botBounce 3s ease-in-out infinite;
+    }
+    @keyframes botBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+    .hero-banner-title {
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        color: #38bdf8 !important;
+        text-transform: uppercase;
+    }
+    .hero-banner-sub {
+        font-size: 0.82rem;
+        color: #94a3b8 !important;
+    }
+    .hero-banner-badge {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        background: rgba(6, 78, 59, 0.6);
+        gap: 6px;
+        background: rgba(16, 185, 129, 0.2);
         border: 1px solid #10b981;
-        padding: 5px 14px;
-        border-radius: 50px;
         color: #34d399 !important;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         font-weight: 700;
-        letter-spacing: 0.05em;
+        padding: 4px 12px;
+        border-radius: 50px;
         text-transform: uppercase;
-        margin-bottom: 10px;
-    }
-    .pulse-dot {
-        width: 8px;
-        height: 8px;
-        background-color: #10b981;
-        border-radius: 50%;
-        box-shadow: 0 0 10px #10b981;
-        animation: pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-        0% { transform: scale(0.95); opacity: 0.8; }
-        50% { transform: scale(1.35); opacity: 1; }
-        100% { transform: scale(0.95); opacity: 0.8; }
+        letter-spacing: 0.04em;
     }
 
     /* Main Typography */
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
         font-weight: 800;
         background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
         -webkit-background-clip: text;
@@ -86,7 +109,7 @@ st.markdown(
     .hero-subtitle {
         color: #94a3b8 !important;
         font-size: 1.05rem;
-        margin-bottom: 20px;
+        margin-bottom: 22px;
         line-height: 1.5;
     }
 
@@ -94,8 +117,8 @@ st.markdown(
     .password-display-card {
         background: #020617;
         border: 2px solid #0284c7;
-        border-radius: 12px;
-        padding: 18px;
+        border-radius: 14px;
+        padding: 20px;
         font-family: 'Courier New', Courier, monospace;
         font-size: 1.45rem;
         font-weight: 700;
@@ -104,7 +127,7 @@ st.markdown(
         word-break: break-all;
         letter-spacing: 0.05em;
         margin: 12px 0;
-        box-shadow: 0 0 25px rgba(2, 132, 199, 0.3);
+        box-shadow: 0 0 30px rgba(2, 132, 199, 0.35);
     }
 
     .helper-text {
@@ -119,76 +142,123 @@ st.markdown(
     }
 
     /* =========================================================================
-       AESTHETIC FLOATING AGENT BUTTON (FUTURISTIC NEON GLOW)
+       IRRESISTIBLE EYE-CATCHING FLOATING AGENT WIDGET (ATTENTION-GRABBING)
        ========================================================================= */
+    /* Speech Bubble Callout above corner button */
+    .agent-speech-callout {
+        position: fixed !important;
+        bottom: 88px !important;
+        right: 24px !important;
+        z-index: 999998 !important;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95)) !important;
+        border: 1.5px solid #38bdf8 !important;
+        border-radius: 14px !important;
+        padding: 8px 14px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.4) !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        animation: floatBubble 3s ease-in-out infinite !important;
+        cursor: pointer !important;
+        backdrop-filter: blur(8px) !important;
+    }
+    @keyframes floatBubble {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+    .agent-speech-callout::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        right: 28px;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid #38bdf8;
+    }
+    .speech-callout-text {
+        color: #ffffff !important;
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+    }
+    .speech-callout-sparkle {
+        font-size: 1rem;
+        filter: drop-shadow(0 0 6px #facc15);
+        animation: sparkleSpin 2s infinite linear;
+    }
+
+    /* Floating Popover Button */
     div[data-testid="stPopover"] {
         position: fixed !important;
-        bottom: 26px !important;
-        right: 26px !important;
+        bottom: 22px !important;
+        right: 24px !important;
         z-index: 999999 !important;
-        width: 66px !important;
-        height: 66px !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
 
     div[data-testid="stPopover"] > button {
-        width: 66px !important;
-        height: 66px !important;
-        min-width: 66px !important;
-        min-height: 66px !important;
-        border-radius: 50% !important;
-        background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #a855f7 100%) !important;
+        background: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%) !important;
+        background-size: 200% 200% !important;
+        animation: gradientShift 4s ease infinite, agentPulseGlow 2.5s infinite alternate !important;
         color: #ffffff !important;
-        border: 2px solid #7dd3fc !important;
-        box-shadow: 0 0 25px rgba(14, 165, 233, 0.65), 0 0 45px rgba(99, 102, 241, 0.35) !important;
-        display: flex !important;
+        border-radius: 50px !important;
+        padding: 12px 22px !important;
+        font-size: 0.98rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.04em !important;
+        border: 2px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: 0 0 25px rgba(2, 132, 199, 0.8), 0 0 50px rgba(147, 51, 234, 0.4) !important;
+        display: inline-flex !important;
         align-items: center !important;
-        justify-content: center !important;
-        padding: 0 !important;
+        gap: 8px !important;
         cursor: pointer !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        animation: agentGlow 3s ease-in-out infinite alternate !important;
     }
 
-    @keyframes agentGlow {
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @keyframes agentPulseGlow {
         0% {
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.6), 0 0 35px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 0 20px rgba(2, 132, 199, 0.7), 0 0 35px rgba(147, 51, 234, 0.3);
             transform: scale(1);
         }
         100% {
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.9), 0 0 55px rgba(168, 85, 247, 0.5);
+            box-shadow: 0 0 32px rgba(56, 189, 248, 1), 0 0 60px rgba(147, 51, 234, 0.6);
             transform: scale(1.04);
         }
     }
 
     div[data-testid="stPopover"] > button:hover {
-        transform: scale(1.12) translateY(-3px) !important;
-        box-shadow: 0 0 35px rgba(56, 189, 248, 1), 0 0 60px rgba(168, 85, 247, 0.7) !important;
+        transform: scale(1.1) translateY(-2px) !important;
+        box-shadow: 0 0 40px rgba(56, 189, 248, 1), 0 0 70px rgba(147, 51, 234, 0.8) !important;
         border-color: #ffffff !important;
     }
 
     div[data-testid="stPopover"] > button p {
-        font-size: 2rem !important;
+        font-size: 0.98rem !important;
+        font-weight: 800 !important;
         margin: 0 !important;
-        padding: 0 !important;
         line-height: 1 !important;
-        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7));
     }
 
-    /* Floating Popover Container */
+    /* Floating Popover Card Window */
     div[data-testid="stPopoverBody"] {
         background: #090d16 !important;
         border: 2px solid #0284c7 !important;
         border-radius: 18px !important;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(2, 132, 199, 0.3) !important;
-        width: 380px !important;
+        box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 35px rgba(2, 132, 199, 0.35) !important;
+        width: 390px !important;
         max-width: 90vw !important;
         padding: 16px !important;
     }
 
     /* =========================================================================
-       MOBILE RESPONSIVENESS (SMARTPHONE & TABLET OPTIMIZATIONS)
+       100% MOBILE RESPONSIVENESS
        ========================================================================= */
     @media (max-width: 768px) {
         .hero-title {
@@ -199,35 +269,45 @@ st.markdown(
             font-size: 0.92rem !important;
             margin-bottom: 16px !important;
         }
+        .hero-agent-banner {
+            padding: 10px 14px !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 8px !important;
+        }
         .password-display-card {
             font-size: 1.15rem !important;
             padding: 14px 10px !important;
             margin: 8px 0 !important;
         }
-        /* Mobile friendly popover button */
+        /* Mobile corner widget adjustments */
+        .agent-speech-callout {
+            bottom: 74px !important;
+            right: 16px !important;
+            padding: 6px 12px !important;
+        }
+        .speech-callout-text {
+            font-size: 0.78rem !important;
+        }
         div[data-testid="stPopover"] {
-            bottom: 18px !important;
-            right: 18px !important;
-            width: 58px !important;
-            height: 58px !important;
+            bottom: 16px !important;
+            right: 16px !important;
         }
         div[data-testid="stPopover"] > button {
-            width: 58px !important;
-            height: 58px !important;
-            min-width: 58px !important;
-            min-height: 58px !important;
+            padding: 10px 16px !important;
+            font-size: 0.88rem !important;
         }
         div[data-testid="stPopover"] > button p {
-            font-size: 1.7rem !important;
+            font-size: 0.88rem !important;
         }
         div[data-testid="stPopoverBody"] {
             width: calc(100vw - 32px) !important;
             max-width: 360px !important;
-            right: 16px !important;
+            right: 14px !important;
             padding: 12px !important;
         }
         button[data-baseweb="tab"] {
-            font-size: 0.9rem !important;
+            font-size: 0.88rem !important;
             padding: 8px 10px !important;
         }
     }
@@ -462,7 +542,7 @@ if "messages" not in st.session_state:
 with st.sidebar:
     st.markdown(
         """
-        <div class="agent-status-badge">
+        <div class="hero-banner-badge" style="margin-bottom: 12px;">
             <span class="pulse-dot"></span>
             Sentinel Agent: 24/7 Live
         </div>
@@ -496,13 +576,21 @@ with st.sidebar:
 
 
 # ==============================================================================
-# 7. MAIN HEADER & TABS
+# 7. MAIN HEADER & HERO BANNER
 # ==============================================================================
 st.markdown(
     """
-    <div class="agent-status-badge">
-        <span class="pulse-dot"></span>
-        Zero-Knowledge Architecture &bull; CSPRNG Kernel Powered
+    <div class="hero-agent-banner">
+        <div class="hero-banner-left">
+            <span class="hero-agent-avatar">🤖</span>
+            <div>
+                <div class="hero-banner-title">CipherSentinel Autonomous Agentic Core</div>
+                <div class="hero-banner-sub">CSPRNG Kernel Randomness &bull; Zero-Knowledge Memory &bull; 24/7 AI Defense</div>
+            </div>
+        </div>
+        <div class="hero-banner-badge">
+            <span class="pulse-dot"></span> AGENT ONLINE
+        </div>
     </div>
     <div class="hero-title">CipherSentinel AI Password Studio</div>
     <div class="hero-subtitle">Generate unhackable credentials with military-grade CSPRNG entropy & 24/7 Agentic AI defense.</div>
@@ -676,21 +764,32 @@ with tab_specs:
 
 
 # ==============================================================================
-# 8. AESTHETIC FLOATING AGENT BUTTON IN CORNER (ROBOTIC AGENT ICON)
+# 8. EYE-CATCHING FLOATING AGENT CALLOUT & AESTHETIC LAUNCH BUTTON
 # ==============================================================================
-with st.popover("🤖", help="Open CipherSentinel AI Agent (24/7 Live Support)"):
+# Animated floating speech callout that instantly attracts visitor attention
+st.markdown(
+    """
+    <div class="agent-speech-callout">
+        <span class="speech-callout-sparkle">✨</span>
+        <span class="speech-callout-text"><b>Sentinel AI Agent</b> is Online &bull; Tap here!</span>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+with st.popover("🤖 Chat with Agent ✨", help="Click to open CipherSentinel AI Agent (24/7 Live Support)"):
     st.markdown(
         """
-        <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid #0284c7; border-radius: 12px; padding: 12px; margin-bottom: 12px; box-shadow: 0 0 15px rgba(2, 132, 199, 0.25);">
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95)); border: 2px solid #38bdf8; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);">
             <div style="display: flex; align-items: center; justify-content: space-between;">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 1.8rem; filter: drop-shadow(0 0 8px #38bdf8);">🤖</span>
+                    <span style="font-size: 2rem; filter: drop-shadow(0 0 10px #38bdf8);">🤖</span>
                     <div>
-                        <div style="font-weight: 800; color: #ffffff; font-size: 1.02rem; letter-spacing: 0.03em;">CIPHERSENTINEL AGENT</div>
-                        <div style="font-size: 0.75rem; color: #38bdf8; font-family: monospace;">STATUS: v2.5 &bull; ONLINE 24/7</div>
+                        <div style="font-weight: 800; color: #ffffff; font-size: 1.05rem; letter-spacing: 0.04em;">CIPHERSENTINEL AI AGENT</div>
+                        <div style="font-size: 0.75rem; color: #38bdf8; font-family: monospace;">PROTOCOL: v2.5 &bull; ONLINE 24/7</div>
                     </div>
                 </div>
-                <span style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 20px;">ACTIVE</span>
+                <span style="background: rgba(16, 185, 129, 0.25); border: 1.5px solid #10b981; color: #34d399; font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 50px;">LIVE</span>
             </div>
         </div>
         """,
@@ -719,7 +818,7 @@ with st.popover("🤖", help="Open CipherSentinel AI Agent (24/7 Live Support)")
                 st.markdown(m["content"])
 
     # Chat Input inside popover
-    chat_prompt = st.chat_input("Ask Sentinel Agent (e.g. Is this safe?)...", key="corner_agent_chat_input")
+    chat_prompt = st.chat_input("Ask Sentinel Agent (e.g. Is this safe?)...", key="corner_aesthetic_agent_input")
 
     selected_prompt = quick_choice or chat_prompt
 
