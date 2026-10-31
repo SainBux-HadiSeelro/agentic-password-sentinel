@@ -1,0 +1,21 @@
+[project]
+name = "agentic-password-sentinel"
+version = "1.0.0"
+description = "Enterprise-Grade Agentic Password Suite with CSPRNG Cryptography, Real-Time Shannon Entropy & 24/7 AI Security Assistant"
+readme = "README.md"
+authors = [
+    { name = "Hadi Seelro", email = "hadiseelro@portfolio.dev" }
+]
+keywords = [
+    "password-generator",
+    "csprng",
+    "agentic-ai",
+    "cybersecurity",
+    "nist-sp-800-63b",
+    "entropy",
+    "streamlit"
+]
+requires-python = ">=3.12"
+dependencies = [
+    "streamlit>=1.42.0",
+]
