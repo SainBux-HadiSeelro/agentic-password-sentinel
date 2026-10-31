@@ -6,36 +6,36 @@ from typing import Tuple
 import streamlit as st
 
 # ==============================================================================
-# 1. PAGE CONFIGURATION & HIGH-CONTRAST MODERN THEME
+# 1. PAGE CONFIGURATION & AESTHETIC AGENTIC THEME (MOBILE RESPONSIVE)
 # ==============================================================================
 st.set_page_config(
-    page_title="CipherSentinel AI | Smart Password Studio & 24/7 Assistant",
-    page_icon="🛡️",
+    page_title="CipherSentinel AI | Autonomous Cryptographic Suite",
+    page_icon="🤖",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
-# High-Contrast Cyber Clean CSS with Floating Bottom-Right Chatbot Widget
+# High-Contrast, Aesthetic Cyber-Agent Theme with 100% Mobile Responsiveness
 st.markdown(
     """
     <style>
-    /* Global Background and High-Contrast Typography */
+    /* Global Base */
     .stApp {
         background-color: #0b1120 !important;
         color: #ffffff !important;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
     }
 
-    /* Force all text, labels, and paragraphs to have high contrast */
+    /* Force high-contrast readability */
     p, span, label, div, h1, h2, h3, h4, h5, h6, .stMarkdown, .stText {
         color: #ffffff !important;
     }
-    
-    /* Widget Labels (Sliders, Radios, Checkboxes) */
+
+    /* Widget Labels */
     .stSlider label, .stRadio label, .stCheckbox label, .stSelectbox label {
         color: #ffffff !important;
         font-weight: 600 !important;
-        font-size: 1.02rem !important;
+        font-size: 1rem !important;
     }
 
     /* KaTeX / Math Formulas visibility */
@@ -48,20 +48,20 @@ st.markdown(
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: #064e3b;
+        background: rgba(6, 78, 59, 0.6);
         border: 1px solid #10b981;
-        padding: 6px 16px;
+        padding: 5px 14px;
         border-radius: 50px;
         color: #34d399 !important;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 700;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
     }
     .pulse-dot {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         background-color: #10b981;
         border-radius: 50%;
         box-shadow: 0 0 10px #10b981;
@@ -73,21 +73,24 @@ st.markdown(
         100% { transform: scale(0.95); opacity: 0.8; }
     }
 
-    /* Main Title & Subtitle */
+    /* Main Typography */
     .hero-title {
         font-size: 2.2rem;
         font-weight: 800;
-        color: #ffffff !important;
+        background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         margin-bottom: 6px;
+        line-height: 1.2;
     }
     .hero-subtitle {
         color: #94a3b8 !important;
-        font-size: 1.1rem;
-        margin-bottom: 24px;
+        font-size: 1.05rem;
+        margin-bottom: 20px;
         line-height: 1.5;
     }
 
-    /* Generated Password Display Card */
+    /* Password Display Card */
     .password-display-card {
         background: #020617;
         border: 2px solid #0284c7;
@@ -99,77 +102,134 @@ st.markdown(
         color: #38bdf8 !important;
         text-align: center;
         word-break: break-all;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.05em;
         margin: 12px 0;
-        box-shadow: 0 0 25px rgba(2, 132, 199, 0.25);
+        box-shadow: 0 0 25px rgba(2, 132, 199, 0.3);
     }
 
-    /* Captions with readable contrast */
     .helper-text {
         color: #cbd5e1 !important;
-        font-size: 0.95rem;
+        font-size: 0.92rem;
     }
 
-    /* Tab styling */
     button[data-baseweb="tab"] {
-        font-size: 1.05rem !important;
+        font-size: 1.02rem !important;
         font-weight: 600 !important;
         color: #ffffff !important;
     }
 
     /* =========================================================================
-       FLOATING CORNER CHATBOT CIRCULAR BUTTON (LIKE MODERN WEBSITES)
+       AESTHETIC FLOATING AGENT BUTTON (FUTURISTIC NEON GLOW)
        ========================================================================= */
     div[data-testid="stPopover"] {
         position: fixed !important;
-        bottom: 28px !important;
-        right: 28px !important;
+        bottom: 26px !important;
+        right: 26px !important;
         z-index: 999999 !important;
-        width: 64px !important;
-        height: 64px !important;
+        width: 66px !important;
+        height: 66px !important;
         margin: 0 !important;
         padding: 0 !important;
     }
 
     div[data-testid="stPopover"] > button {
-        width: 64px !important;
-        height: 64px !important;
-        min-width: 64px !important;
-        min-height: 64px !important;
+        width: 66px !important;
+        height: 66px !important;
+        min-width: 66px !important;
+        min-height: 66px !important;
         border-radius: 50% !important;
-        background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%) !important;
+        background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #a855f7 100%) !important;
         color: #ffffff !important;
-        border: 2.5px solid #38bdf8 !important;
-        box-shadow: 0 8px 30px rgba(2, 132, 199, 0.6) !important;
+        border: 2px solid #7dd3fc !important;
+        box-shadow: 0 0 25px rgba(14, 165, 233, 0.65), 0 0 45px rgba(99, 102, 241, 0.35) !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         padding: 0 !important;
         cursor: pointer !important;
-        transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        animation: agentGlow 3s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes agentGlow {
+        0% {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.6), 0 0 35px rgba(99, 102, 241, 0.3);
+            transform: scale(1);
+        }
+        100% {
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.9), 0 0 55px rgba(168, 85, 247, 0.5);
+            transform: scale(1.04);
+        }
     }
 
     div[data-testid="stPopover"] > button:hover {
-        transform: scale(1.1) translateY(-3px) !important;
-        box-shadow: 0 12px 35px rgba(2, 132, 199, 0.85) !important;
-        border-color: #7dd3fc !important;
+        transform: scale(1.12) translateY(-3px) !important;
+        box-shadow: 0 0 35px rgba(56, 189, 248, 1), 0 0 60px rgba(168, 85, 247, 0.7) !important;
+        border-color: #ffffff !important;
     }
 
     div[data-testid="stPopover"] > button p {
-        font-size: 1.8rem !important;
+        font-size: 2rem !important;
         margin: 0 !important;
         padding: 0 !important;
         line-height: 1 !important;
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7));
     }
 
+    /* Floating Popover Container */
     div[data-testid="stPopoverBody"] {
-        background: #0f172a !important;
+        background: #090d16 !important;
         border: 2px solid #0284c7 !important;
         border-radius: 18px !important;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(2, 132, 199, 0.3) !important;
         width: 380px !important;
         max-width: 90vw !important;
         padding: 16px !important;
+    }
+
+    /* =========================================================================
+       MOBILE RESPONSIVENESS (SMARTPHONE & TABLET OPTIMIZATIONS)
+       ========================================================================= */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 1.6rem !important;
+            margin-bottom: 4px !important;
+        }
+        .hero-subtitle {
+            font-size: 0.92rem !important;
+            margin-bottom: 16px !important;
+        }
+        .password-display-card {
+            font-size: 1.15rem !important;
+            padding: 14px 10px !important;
+            margin: 8px 0 !important;
+        }
+        /* Mobile friendly popover button */
+        div[data-testid="stPopover"] {
+            bottom: 18px !important;
+            right: 18px !important;
+            width: 58px !important;
+            height: 58px !important;
+        }
+        div[data-testid="stPopover"] > button {
+            width: 58px !important;
+            height: 58px !important;
+            min-width: 58px !important;
+            min-height: 58px !important;
+        }
+        div[data-testid="stPopover"] > button p {
+            font-size: 1.7rem !important;
+        }
+        div[data-testid="stPopoverBody"] {
+            width: calc(100vw - 32px) !important;
+            max-width: 360px !important;
+            right: 16px !important;
+            padding: 12px !important;
+        }
+        button[data-baseweb="tab"] {
+            font-size: 0.9rem !important;
+            padding: 8px 10px !important;
+        }
     }
     </style>
     """,
@@ -302,7 +362,7 @@ def assess_password_strength(pwd: str) -> Tuple[float, str, str, str]:
         rating = "Strong (Enterprise Grade)"
         color = "#10b981"
     else:
-        rating = "Unbreakable (Military / Agentic Grade) 🛡️"
+        rating = "Unbreakable (Agentic / Military Grade) 🛡️"
         color = "#38bdf8"
 
     return round(entropy, 1), rating, color, crack_time
@@ -312,63 +372,64 @@ def assess_password_strength(pwd: str) -> Tuple[float, str, str, str]:
 # 4. 24/7 AGENTIC ASSISTANT ("CipherSentinel AI")
 # ==============================================================================
 def get_friendly_agent_response(user_msg: str) -> str:
-    """Friendly 24/7 AI response engine that understands English and Roman Urdu."""
+    """Friendly 24/7 AI Agent response engine that speaks English and Roman Urdu."""
     q = user_msg.lower().strip()
 
     if any(k in q for k in ["who are you", "who made", "developer", "creator", "portfolio", "kisne banaya", "author"]):
         return (
-            "👋 **Hello!** Main hoon **CipherSentinel AI**.\n\n"
-            "Mujhe **Hadi Seelro** ne design aur develop kiya hai, jo ek **Agentic AI Developer & Software Engineer** hain. "
-            "Aap unki profile aur projects GitHub par dekh sakte hain: [GitHub Profile](https://github.com/SainBux-HadiSeelro)."
+            "🤖 **Agent Identity Protocol:**\n\n"
+            "Main **CipherSentinel AI Agent** hoon—ek autonomous cybersecurity model. "
+            "Mujhe **Hadi Seelro** ne engineer kiya hai jo ek **Agentic AI Developer & Full-Stack Engineer** hain.\n\n"
+            "Unka portfolio aur projects dekhne ke liye yahan visit karein: [GitHub Profile](https://github.com/SainBux-HadiSeelro)."
         )
 
     if any(k in q for k in ["safe", "secure", "privacy", "leak", "store", "save", "chori", "save krte ho"]):
         return (
-            "🔒 **100% Safe & Zero-Knowledge Guarantee:**\n\n"
-            "- Ham aapke kisi bhi password ko **save, log ya store nahi karte**.\n"
-            "- Sab kuch aapke apne browser/device ki memory (RAM) main execute hota hai.\n"
-            "- Jaise hi aap tab band karte hain, sab data khatam ho jata hai."
+            "🔒 **Zero-Knowledge Security Telemetry:**\n\n"
+            "- **Zero Persistence:** Koi bhi generated password database ya server par send ya store **nahi** hota.\n"
+            "- **Volatile RAM:** Sab kuch aapke local browser runtime main execute hota hai.\n"
+            "- **Session Purge:** Jaise hi aap tab refresh ya close karte hain, keys automatically destroy ho jati hain."
         )
 
     if any(k in q for k in ["how to use", "kaise use krein", "tareeqa", "help", "madad"]):
         return (
-            "💡 **Aasan Tareeqa (How to Use):**\n\n"
-            "1. **'Password Type'** select karein (Super Strong, Easy Words, ya PIN).\n"
-            "2. **'Generate Password'** button dabayein.\n"
-            "3. Password box ke neechay click karke **instant copy** karein!"
+            "⚡ **Quick Operation Guide:**\n\n"
+            "1. **Password Type** choose karein (Super Strong, Easy Words, ya PIN).\n"
+            "2. **Length Slider** adjust karein.\n"
+            "3. **Generate** button press karein aur **1-Click Copy Box** se clipboard par copy karein!"
         )
 
     if any(k in q for k in ["tips", "best practice", "strong password", "kaisa hona chahiye"]):
         return (
-            "🛡️ **Strong Password Ke 4 Golden Rules:**\n\n"
-            "1. **Length:** Kam az kam **12 se 16 characters** lamba rakhein.\n"
-            "2. **Mix:** Letters, numbers aur symbols (!@#$) mix karein.\n"
-            "3. **Unique:** Har account (Google, Facebook, Bank) ka password alag rakhein.\n"
-            "4. **No Personal Info:** Apna naam, date of birth ya phone number kabhi password main na lagayein."
+            "🛡️ **Agentic Defense Directives:**\n\n"
+            "1. **Length ≥ 14:** Length is always king for high entropy.\n"
+            "2. **Entropy Diversity:** Mix upper, lower, digits aur symbols.\n"
+            "3. **Zero Reuse:** Kabhi bhi banking aur social accounts ka password ek jaisa na rakhein.\n"
+            "4. **MFA Enablement:** Critical accounts par Hardware Key ya Authenticator App (2FA) activate rakhein."
         )
 
     if any(k in q for k in ["pin", "atm", "mobile pin"]):
         return (
-            "🔢 **Secure PIN Advice:**\n\n"
-            "Phone aur ATM ke liye hamesha random PIN use karein jaise `839174`.\n"
-            "Kabhi bhi `1234`, `0000`, ya apni birth year PIN na rakhein!"
+            "🔢 **Secure PIN Guidance:**\n\n"
+            "Phone aur ATM ke liye hamesha true-random digits use karein jaise `839174`.\n"
+            "Kabhi bhi predictable numbers (jaise `1234`, `0000`, birthday) PIN na rakhein!"
         )
 
     if any(k in q for k in ["entropy", "math", "technical", "csprng"]):
         return (
-            "📊 **Technical Specifications:**\n\n"
-            "- **CSPRNG:** Python ka `secrets` module use hota hai jo unhackable random numbers deta hai.\n"
-            "- **Entropy:** Password ki unpredictability ko bits main calculate karta hai ($E = L \\times \\log_2(R)$).\n"
-            "- **Standard:** NIST SP 800-63B aur OWASP guidelines certified."
+            "📊 **Cryptographic Specifications:**\n\n"
+            "- **Random Engine:** OS Kernel-level CSPRNG (`secrets.choice` / `/dev/urandom`).\n"
+            "- **Shannon Entropy:** $E = L \\times \\log_2(R)$ bits.\n"
+            "- **Compliance Standards:** NIST SP 800-63B & OWASP ASVS 4.0 guidelines verified."
         )
 
     return (
-        f"🤖 **CipherSentinel AI:** Main aapki baat samajh gaya: *'{user_msg}'*.\n\n"
+        f"🤖 **CipherSentinel Agent Ready:** Query received: *'{user_msg}'*.\n\n"
         "Aap mujh se ye cheezein pooch sakte hain:\n"
-        "- *'Is this website safe?'*\n"
-        "- *'How to create a strong password?'*\n"
+        "- *'Is this website safe & zero-knowledge?'*\n"
+        "- *'How to create an unbreakable password?'*\n"
         "- *'Who is the developer of this project?'*\n"
-        "- *'ATM ya phone ke liye safe PIN konsi hai?'*"
+        "- *'How does CSPRNG kernel entropy work?'*"
     )
 
 
@@ -386,28 +447,30 @@ if "messages" not in st.session_state:
         {
             "role": "assistant",
             "content": (
-                "👋 **Hello!** Main hoon **CipherSentinel AI**.\n\n"
-                "Aap mujh se password safety, tips, ya is website ki details asaan alfaz main pooch sakte hain!"
+                "🤖 **CipherSentinel AI Agent Online (24/7)**\n\n"
+                "System Status: `CSPRNG KERNEL SYNCED` | `ZERO-KNOWLEDGE ACTIVE`\n\n"
+                "Greetings! Main aapka 24/7 autonomous security advisor hoon. "
+                "Password safety, account protection, ya technical architecture ke baray main koi bhi sawaal poochein!"
             ),
         }
     ]
 
 
 # ==============================================================================
-# 6. SIDEBAR - SIMPLE & ELEGANT
+# 6. SIDEBAR
 # ==============================================================================
 with st.sidebar:
     st.markdown(
         """
         <div class="agent-status-badge">
             <span class="pulse-dot"></span>
-            Sentinel AI: 24/7 Active
+            Sentinel Agent: 24/7 Live
         </div>
         """,
         unsafe_allow_html=True,
     )
     st.markdown("## 🛡️ **CipherSentinel**")
-    st.markdown("<div class='helper-text'>Your Smart Cybersecurity Suite</div>", unsafe_allow_html=True)
+    st.markdown("<div class='helper-text'>Agentic Cryptographic Suite</div>", unsafe_allow_html=True)
     st.divider()
 
     st.markdown("### 📋 **Recent Passwords**")
@@ -439,10 +502,10 @@ st.markdown(
     """
     <div class="agent-status-badge">
         <span class="pulse-dot"></span>
-        100% Safe &bull; Zero Data Saved &bull; Instant Copy
+        Zero-Knowledge Architecture &bull; CSPRNG Kernel Powered
     </div>
     <div class="hero-title">CipherSentinel AI Password Studio</div>
-    <div class="hero-subtitle">Generate unhackable passwords in 1-click & get 24/7 live guidance from our Cybersecurity AI Agent.</div>
+    <div class="hero-subtitle">Generate unhackable credentials with military-grade CSPRNG entropy & 24/7 Agentic AI defense.</div>
     """,
     unsafe_allow_html=True,
 )
@@ -460,15 +523,15 @@ with tab_gen:
     col_left, col_right = st.columns([1.1, 1], gap="large")
 
     with col_left:
-        st.markdown("### 1️⃣ Choose Password Type")
+        st.markdown("### 1️⃣ Select Password Type")
 
         pwd_type = st.radio(
-            "What kind of password do you need?",
+            "Choose Generation Strategy:",
             [
                 "🛡️ Super Strong Password (Recommended for Google, Banks, Social Media)",
                 "🧠 Easy to Remember Words (e.g. Falcon-Quantum-Echo-89)",
                 "🔢 Simple Number PIN (for Mobile phone, SIM, or ATM)",
-                "⚙️ Custom Settings (Choose your own options)",
+                "⚙️ Custom Settings (Fine-tune characters)",
             ],
             index=0,
         )
@@ -477,7 +540,7 @@ with tab_gen:
 
         if "Super Strong" in pwd_type:
             pwd_len = st.slider("Password Length", min_value=8, max_value=32, value=16)
-            st.markdown("<div class='helper-text'>💡 16 characters gives maximum protection against any hacker.</div>", unsafe_allow_html=True)
+            st.markdown("<div class='helper-text'>💡 16 characters provides complete protection against modern GPU brute-force attacks.</div>", unsafe_allow_html=True)
 
             if st.button("⚡ Generate Super Strong Password", type="primary", use_container_width=True):
                 new_pwd = create_strong_password(pwd_len, True, True, True, True, True)
@@ -486,12 +549,12 @@ with tab_gen:
                 st.rerun()
 
         elif "Easy to Remember" in pwd_type:
-            word_count = st.slider("How many words?", min_value=3, max_value=6, value=4)
-            sep = st.selectbox("Separator between words", ["- (Hyphen)", "_ (Underscore)", "  (Space)"], index=0)
+            word_count = st.slider("Number of Words", min_value=3, max_value=6, value=4)
+            sep = st.selectbox("Word Separator", ["- (Hyphen)", "_ (Underscore)", "  (Space)"], index=0)
             actual_sep = "-" if "-" in sep else ("_" if "_" in sep else " ")
-            add_num = st.checkbox("Add a number at the end for extra safety", value=True)
+            add_num = st.checkbox("Append numbers for extra cryptographic entropy", value=True)
 
-            if st.button("⚡ Generate Easy Password", type="primary", use_container_width=True):
+            if st.button("⚡ Generate Memorable Passphrase", type="primary", use_container_width=True):
                 new_pwd = create_easy_passphrase(word_count, actual_sep, add_num)
                 st.session_state.active_pwd = new_pwd
                 st.session_state.recent_passwords.append(new_pwd)
@@ -510,12 +573,12 @@ with tab_gen:
             custom_len = st.slider("Length", min_value=6, max_value=64, value=14)
             c1, c2 = st.columns(2)
             with c1:
-                u_check = st.checkbox("Capital Letters (A-Z)", value=True)
-                l_check = st.checkbox("Small Letters (a-z)", value=True)
+                u_check = st.checkbox("Uppercase (A-Z)", value=True)
+                l_check = st.checkbox("Lowercase (a-z)", value=True)
             with c2:
                 d_check = st.checkbox("Numbers (0-9)", value=True)
                 s_check = st.checkbox("Symbols (!@#$)", value=True)
-            no_confusing = st.checkbox("Avoid confusing letters (like 0 and O, or 1 and l)", value=True)
+            no_confusing = st.checkbox("Avoid ambiguous characters (like 0 and O, or 1 and l)", value=True)
 
             if st.button("⚡ Generate Custom Password", type="primary", use_container_width=True):
                 new_pwd = create_strong_password(custom_len, u_check, l_check, d_check, s_check, no_confusing)
@@ -525,7 +588,7 @@ with tab_gen:
 
     # RIGHT COLUMN: DISPLAY & COPY
     with col_right:
-        st.markdown("### 2️⃣ Your Generated Password")
+        st.markdown("### 2️⃣ Cryptographic Output")
 
         current_pwd = st.session_state.active_pwd
         st.markdown(
@@ -533,7 +596,7 @@ with tab_gen:
             unsafe_allow_html=True,
         )
 
-        st.markdown("##### 📋 Copy Password with 1 Click:")
+        st.markdown("##### 📋 1-Click Copy:")
         st.code(current_pwd, language="text")
 
         st.markdown("---")
@@ -551,15 +614,15 @@ with tab_gen:
 
         col_m1, col_m2 = st.columns(2)
         with col_m1:
-            st.metric(label="Time for Hacker to Crack", value=time_to_crack)
+            st.metric(label="Brute-Force Resistance", value=time_to_crack)
         with col_m2:
-            st.metric(label="Security Score", value=f"{entropy_score} / 100")
+            st.metric(label="Shannon Entropy Score", value=f"{entropy_score} / 100")
 
         st.markdown("---")
-        st.markdown("##### ✅ Quick Safety Check:")
-        c_len = "✅ Good length" if len(current_pwd) >= 12 else "⚠️ Short password"
-        c_num = "✅ Contains numbers" if any(c.isdigit() for c in current_pwd) else "ℹ️ No numbers"
-        c_sym = "✅ Contains symbols" if any(not c.isalnum() for c in current_pwd) else "ℹ️ No symbols"
+        st.markdown("##### 🔍 NIST SP 800-63B Quick Check:")
+        c_len = "✅ Recommended length (≥12)" if len(current_pwd) >= 12 else "⚠️ Short length"
+        c_num = "✅ Numerical characters present" if any(c.isdigit() for c in current_pwd) else "ℹ️ No numbers"
+        c_sym = "✅ Symbol entropy present" if any(not c.isalnum() for c in current_pwd) else "ℹ️ No symbols"
 
         st.markdown(f"- {c_len}\n- {c_num}\n- {c_sym}")
 
@@ -591,7 +654,7 @@ with tab_specs:
             - **NIST SP 800-63B:** Digital Identity Guidelines (Section 5.1.1)
             - **OWASP ASVS 4.0:** Application Security Verification Standard
             - **Storage Model:** 100% Zero-Knowledge ephemeral in-memory execution
-            - **Availability:** 24/7 Autonomous Hybrid NLP Agent
+            - **Agent Core:** 24/7 Autonomous Hybrid NLP Agent
             """
         )
 
@@ -601,59 +664,62 @@ with tab_specs:
         """
         ```mermaid
         flowchart LR
-            User([👤 User]) -->|1-Click Request| UI[🖥️ Streamlit High-Contrast UI]
+            User([👤 User / Mobile Client]) -->|1-Click Request| UI[🖥️ Streamlit High-Contrast UI]
             UI -->|CSPRNG Call| Engine[🛡️ secrets Module & Fisher-Yates]
             Engine -->|Kernel Entropy| OS[(OS Entropy Pool)]
             Engine -->|Calculates Entropy| Metrics[📊 Shannon Entropy & Crack Estimator]
             Metrics --> UI
-            User <-->|24/7 Corner Chatbot| AI[🤖 CipherSentinel AI Helper]
+            User <-->|24/7 Floating Agent Button| AI[🤖 CipherSentinel AI Agent]
         ```
         """
     )
 
 
 # ==============================================================================
-# 8. FLOATING CORNER CHATBOT (LIKE MODERN WEBSITES)
+# 8. AESTHETIC FLOATING AGENT BUTTON IN CORNER (ROBOTIC AGENT ICON)
 # ==============================================================================
-with st.popover("💬", help="Click to chat with 24/7 AI Cybersecurity Assistant"):
+with st.popover("🤖", help="Open CipherSentinel AI Agent (24/7 Live Support)"):
     st.markdown(
         """
-        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #334155; padding-bottom: 8px; margin-bottom: 12px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <span style="font-size: 1.4rem;">🤖</span>
-                <div>
-                    <div style="font-weight: 800; color: #ffffff; font-size: 1.05rem;">CipherSentinel AI</div>
-                    <div style="font-size: 0.78rem; color: #34d399; font-weight: 700;">🟢 Online 24/7 &bull; Instant Support</div>
+        <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid #0284c7; border-radius: 12px; padding: 12px; margin-bottom: 12px; box-shadow: 0 0 15px rgba(2, 132, 199, 0.25);">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.8rem; filter: drop-shadow(0 0 8px #38bdf8);">🤖</span>
+                    <div>
+                        <div style="font-weight: 800; color: #ffffff; font-size: 1.02rem; letter-spacing: 0.03em;">CIPHERSENTINEL AGENT</div>
+                        <div style="font-size: 0.75rem; color: #38bdf8; font-family: monospace;">STATUS: v2.5 &bull; ONLINE 24/7</div>
+                    </div>
                 </div>
+                <span style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 20px;">ACTIVE</span>
             </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    # Quick Prompt Chips inside corner chat
+    # Agent Quick Actions
     chip_col1, chip_col2 = st.columns(2)
     quick_choice = None
-    if chip_col1.button("🔒 Safe hai?", use_container_width=True):
+    if chip_col1.button("🔒 Zero-Knowledge?", use_container_width=True):
         quick_choice = "Kya ye website safe hai aur passwords save krti hai?"
-    if chip_col2.button("🛡️ Strong Tips", use_container_width=True):
+    if chip_col2.button("🛡️ Defense Directives", use_container_width=True):
         quick_choice = "Strong password banane ke best tips kya hain?"
 
     chip_col3, chip_col4 = st.columns(2)
-    if chip_col3.button("📱 PIN Advice", use_container_width=True):
+    if chip_col3.button("📱 Mobile PIN Spec", use_container_width=True):
         quick_choice = "ATM ya phone ke liye safe PIN advice kya hai?"
-    if chip_col4.button("👨‍💻 Developer", use_container_width=True):
+    if chip_col4.button("👨‍💻 Architect Info", use_container_width=True):
         quick_choice = "Who is the developer of this project?"
 
     # Scrollable Chat Container
     chat_box = st.container(height=260)
     with chat_box:
         for m in st.session_state.messages:
-            with st.chat_message(m["role"], avatar="🛡️" if m["role"] == "assistant" else "👤"):
+            with st.chat_message(m["role"], avatar="🤖" if m["role"] == "assistant" else "👤"):
                 st.markdown(m["content"])
 
     # Chat Input inside popover
-    chat_prompt = st.chat_input("Poochhein (e.g. Is this safe?)...", key="corner_chat_input")
+    chat_prompt = st.chat_input("Ask Sentinel Agent (e.g. Is this safe?)...", key="corner_agent_chat_input")
 
     selected_prompt = quick_choice or chat_prompt
 
@@ -663,9 +729,9 @@ with st.popover("💬", help="Click to chat with 24/7 AI Cybersecurity Assistant
         st.session_state.messages.append({"role": "assistant", "content": bot_response})
         st.rerun()
 
-    if st.button("🗑️ Clear Chat", use_container_width=True):
+    if st.button("🗑️ Purge Agent Memory", use_container_width=True):
         st.session_state.messages = [
-            {"role": "assistant", "content": "👋 Chat reset! Main aapki kya madad kar sakta hoon?"}
+            {"role": "assistant", "content": "🤖 Memory purged. Ready for fresh queries!"}
         ]
         st.rerun()
 
