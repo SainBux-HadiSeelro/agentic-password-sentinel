@@ -6,7 +6,7 @@ from typing import Tuple
 import streamlit as st
 
 # ==============================================================================
-# 1. PAGE CONFIGURATION & AESTHETIC AGENTIC CYBER THEME (100% RESPONSIVE)
+# 1. PAGE CONFIGURATION & AESTHETIC AGENTIC THEME (100% RESPONSIVE)
 # ==============================================================================
 st.set_page_config(
     page_title="CipherSentinel AI | Autonomous Agentic Password Suite",
@@ -15,7 +15,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# High-Contrast, Futuristic Agentic CSS with Irresistible Attention-Grabbing Floating Widget
+# High-Contrast, Futuristic Agentic CSS with Interactive Floating Speech Callout Pill
 st.markdown(
     """
     <style>
@@ -142,106 +142,56 @@ st.markdown(
     }
 
     /* =========================================================================
-       IRRESISTIBLE EYE-CATCHING FLOATING AGENT WIDGET (ATTENTION-GRABBING)
+       EXCLUSIVE CORNER AGENT WIDGET: "Sentinel AI Agent is Online • Tap here!"
+       (THE SPEECH PILL ITSELF IS THE INTERACTIVE BUTTON)
        ========================================================================= */
-    /* Speech Bubble Callout above corner button */
-    .agent-speech-callout {
-        position: fixed !important;
-        bottom: 88px !important;
-        right: 24px !important;
-        z-index: 999998 !important;
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95)) !important;
-        border: 1.5px solid #38bdf8 !important;
-        border-radius: 14px !important;
-        padding: 8px 14px !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.4) !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-        animation: floatBubble 3s ease-in-out infinite !important;
-        cursor: pointer !important;
-        backdrop-filter: blur(8px) !important;
-    }
-    @keyframes floatBubble {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-5px); }
-    }
-    .agent-speech-callout::after {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        right: 28px;
-        width: 0;
-        height: 0;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 8px solid #38bdf8;
-    }
-    .speech-callout-text {
-        color: #ffffff !important;
-        font-size: 0.85rem !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.02em !important;
-    }
-    .speech-callout-sparkle {
-        font-size: 1rem;
-        filter: drop-shadow(0 0 6px #facc15);
-        animation: sparkleSpin 2s infinite linear;
-    }
-
-    /* Floating Popover Button */
     div[data-testid="stPopover"] {
         position: fixed !important;
-        bottom: 22px !important;
+        bottom: 24px !important;
         right: 24px !important;
         z-index: 999999 !important;
     }
 
     div[data-testid="stPopover"] > button {
-        background: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%) !important;
-        background-size: 200% 200% !important;
-        animation: gradientShift 4s ease infinite, agentPulseGlow 2.5s infinite alternate !important;
-        color: #ffffff !important;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(30, 41, 59, 0.96) 100%) !important;
+        border: 2px solid #38bdf8 !important;
         border-radius: 50px !important;
-        padding: 12px 22px !important;
-        font-size: 0.98rem !important;
-        font-weight: 800 !important;
-        letter-spacing: 0.04em !important;
-        border: 2px solid rgba(255, 255, 255, 0.8) !important;
-        box-shadow: 0 0 25px rgba(2, 132, 199, 0.8), 0 0 50px rgba(147, 51, 234, 0.4) !important;
+        padding: 12px 24px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 28px rgba(56, 189, 248, 0.55) !important;
         display: inline-flex !important;
         align-items: center !important;
-        gap: 8px !important;
+        gap: 10px !important;
         cursor: pointer !important;
+        animation: floatBubble 3s ease-in-out infinite, pulseGlow 2.5s infinite alternate !important;
+        backdrop-filter: blur(12px) !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
-    @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+    @keyframes floatBubble {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
     }
 
-    @keyframes agentPulseGlow {
+    @keyframes pulseGlow {
         0% {
-            box-shadow: 0 0 20px rgba(2, 132, 199, 0.7), 0 0 35px rgba(147, 51, 234, 0.3);
-            transform: scale(1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.4);
         }
         100% {
-            box-shadow: 0 0 32px rgba(56, 189, 248, 1), 0 0 60px rgba(147, 51, 234, 0.6);
-            transform: scale(1.04);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 38px rgba(56, 189, 248, 0.85);
         }
     }
 
     div[data-testid="stPopover"] > button:hover {
-        transform: scale(1.1) translateY(-2px) !important;
-        box-shadow: 0 0 40px rgba(56, 189, 248, 1), 0 0 70px rgba(147, 51, 234, 0.8) !important;
+        transform: scale(1.06) translateY(-4px) !important;
         border-color: #ffffff !important;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 1), 0 0 45px rgba(56, 189, 248, 1) !important;
     }
 
     div[data-testid="stPopover"] > button p {
-        font-size: 0.98rem !important;
+        color: #ffffff !important;
+        font-size: 0.95rem !important;
         font-weight: 800 !important;
+        letter-spacing: 0.02em !important;
         margin: 0 !important;
         line-height: 1 !important;
     }
@@ -280,28 +230,18 @@ st.markdown(
             padding: 14px 10px !important;
             margin: 8px 0 !important;
         }
-        /* Mobile corner widget adjustments */
-        .agent-speech-callout {
-            bottom: 74px !important;
-            right: 16px !important;
-            padding: 6px 12px !important;
-        }
-        .speech-callout-text {
-            font-size: 0.78rem !important;
-        }
         div[data-testid="stPopover"] {
             bottom: 16px !important;
-            right: 16px !important;
+            right: 14px !important;
         }
         div[data-testid="stPopover"] > button {
             padding: 10px 16px !important;
-            font-size: 0.88rem !important;
         }
         div[data-testid="stPopover"] > button p {
-            font-size: 0.88rem !important;
+            font-size: 0.82rem !important;
         }
         div[data-testid="stPopoverBody"] {
-            width: calc(100vw - 32px) !important;
+            width: calc(100vw - 28px) !important;
             max-width: 360px !important;
             right: 14px !important;
             padding: 12px !important;
@@ -757,27 +697,16 @@ with tab_specs:
             Engine -->|Kernel Entropy| OS[(OS Entropy Pool)]
             Engine -->|Calculates Entropy| Metrics[📊 Shannon Entropy & Crack Estimator]
             Metrics --> UI
-            User <-->|24/7 Floating Agent Button| AI[🤖 CipherSentinel AI Agent]
+            User <-->|24/7 Floating Speech Callout| AI[🤖 CipherSentinel AI Agent]
         ```
         """
     )
 
 
 # ==============================================================================
-# 8. EYE-CATCHING FLOATING AGENT CALLOUT & AESTHETIC LAUNCH BUTTON
+# 8. EXCLUSIVE CORNER AGENT TRIGGER: "Sentinel AI Agent is Online • Tap here!"
 # ==============================================================================
-# Animated floating speech callout that instantly attracts visitor attention
-st.markdown(
-    """
-    <div class="agent-speech-callout">
-        <span class="speech-callout-sparkle">✨</span>
-        <span class="speech-callout-text"><b>Sentinel AI Agent</b> is Online &bull; Tap here!</span>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-with st.popover("🤖 Chat with Agent ✨", help="Click to open CipherSentinel AI Agent (24/7 Live Support)"):
+with st.popover("✨ Sentinel AI Agent is Online • Tap here! 🤖", help="Click to open CipherSentinel AI Agent (24/7 Live Support)"):
     st.markdown(
         """
         <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95)); border: 2px solid #38bdf8; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);">
@@ -818,7 +747,7 @@ with st.popover("🤖 Chat with Agent ✨", help="Click to open CipherSentinel A
                 st.markdown(m["content"])
 
     # Chat Input inside popover
-    chat_prompt = st.chat_input("Ask Sentinel Agent (e.g. Is this safe?)...", key="corner_aesthetic_agent_input")
+    chat_prompt = st.chat_input("Ask Sentinel Agent (e.g. Is this safe?)...", key="corner_single_agent_input")
 
     selected_prompt = quick_choice or chat_prompt
 
