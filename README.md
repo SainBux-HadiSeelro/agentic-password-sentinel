@@ -4,7 +4,7 @@
 ### Next-Gen Agentic Password Suite & 24/7 Autonomous Cybersecurity Assistant
 
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Streamlit App](https://img.shields.io/badge/Live_App-Streamlit_Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://agentic-password-sentinel.streamlit.app/)
 [![CSPRNG Certified](https://img.shields.io/badge/Security-CSPRNG_Kernel_Entropy-00C853?style=for-the-badge&logo=shield&logoColor=white)](#)
 [![NIST SP 800-63B](https://img.shields.io/badge/Standard-NIST_SP_800--63B-0288D1?style=for-the-badge)](#)
 [![OWASP ASVS 4.0](https://img.shields.io/badge/Compliance-OWASP_ASVS_4.0-FF6F00?style=for-the-badge)](#)
@@ -15,7 +15,15 @@
   <i>Agentic AI Developer & Full-Stack Cybersecurity Enthusiast</i>
 </p>
 
-[✨ Live Features](#-key-features) • [🏗️ Architecture](#-system-architecture) • [📊 Mathematical Specs](#-cryptographic--mathematical-specifications) • [🚀 Quickstart](#-getting-started) • [📋 Technical Specs](SPECS.md)
+<p align="center">
+  <a href="https://agentic-password-sentinel.streamlit.app/">
+    <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit">
+  </a>
+  <br>
+  🔗 <b>Direct Link:</b> <a href="https://agentic-password-sentinel.streamlit.app/">agentic-password-sentinel.streamlit.app</a>
+</p>
+
+[🌐 Live Demo](https://agentic-password-sentinel.streamlit.app/) • [✨ Features](#-key-features) • [🏗️ Architecture](#-system-architecture) • [📊 Specs](#-cryptographic--mathematical-specifications) • [🚀 Quickstart](#-getting-started) • [📋 Technical Docs](SPECS.md)
 
 ---
 
@@ -123,7 +131,15 @@ flowchart TD
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 🌐 Instant Live Access (No Setup Required)
+You can test the fully deployed application online immediately without any installation:
+👉 **[agentic-password-sentinel.streamlit.app](https://agentic-password-sentinel.streamlit.app/)**
+
+---
+
+### Local Installation
+
+#### Prerequisites
 - Python `3.12` or higher installed.
 
 ### Installation
