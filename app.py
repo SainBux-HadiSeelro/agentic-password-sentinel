@@ -1,8 +1,7 @@
 import math
 import secrets
 import string
-import time
-from typing import Dict, List, Tuple
+from typing import Tuple
 
 import streamlit as st
 
@@ -10,17 +9,17 @@ import streamlit as st
 # 1. PAGE CONFIGURATION & HIGH-CONTRAST MODERN THEME
 # ==============================================================================
 st.set_page_config(
-    page_title="CipherSentinel AI | Smart Password Generator & Security Assistant",
+    page_title="CipherSentinel AI | Smart Password Studio & 24/7 Assistant",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# High-Contrast Cyber Clean CSS (Ensures 100% crystal-clear readability on all screens)
+# High-Contrast Cyber Clean CSS with Floating Bottom-Right Chatbot Widget
 st.markdown(
     """
     <style>
-    /* Global Background and Typography */
+    /* Global Background and High-Contrast Typography */
     .stApp {
         background-color: #0b1120 !important;
         color: #ffffff !important;
@@ -44,7 +43,7 @@ st.markdown(
         color: #38bdf8 !important;
     }
 
-    /* Live Agent Badge */
+    /* Top Live Agent Badge */
     .agent-status-badge {
         display: inline-flex;
         align-items: center;
@@ -88,23 +87,14 @@ st.markdown(
         line-height: 1.5;
     }
 
-    /* Highlight Card Containers */
-    .card-box {
-        background: #1e293b;
-        border: 1px solid #334155;
-        border-radius: 14px;
-        padding: 20px;
-        margin-bottom: 16px;
-    }
-
-    /* Generated Password Display Box */
+    /* Generated Password Display Card */
     .password-display-card {
         background: #020617;
         border: 2px solid #0284c7;
         border-radius: 12px;
         padding: 18px;
         font-family: 'Courier New', Courier, monospace;
-        font-size: 1.4rem;
+        font-size: 1.45rem;
         font-weight: 700;
         color: #38bdf8 !important;
         text-align: center;
@@ -125,6 +115,49 @@ st.markdown(
         font-size: 1.05rem !important;
         font-weight: 600 !important;
         color: #ffffff !important;
+    }
+
+    /* =========================================================================
+       FLOATING CORNER CHATBOT WIDGET (LIKE MODERN WEBSITES)
+       ========================================================================= */
+    div[data-testid="stPopover"] {
+        position: fixed !important;
+        bottom: 28px !important;
+        right: 28px !important;
+        z-index: 999999 !important;
+    }
+
+    div[data-testid="stPopover"] > button {
+        background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%) !important;
+        color: #ffffff !important;
+        border-radius: 50px !important;
+        padding: 13px 24px !important;
+        font-size: 1.02rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+        border: 2px solid #38bdf8 !important;
+        box-shadow: 0 8px 30px rgba(2, 132, 199, 0.55) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        cursor: pointer !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    div[data-testid="stPopover"] > button:hover {
+        transform: translateY(-2px) scale(1.02) !important;
+        box-shadow: 0 12px 35px rgba(2, 132, 199, 0.75) !important;
+        border-color: #7dd3fc !important;
+    }
+
+    div[data-testid="stPopoverBody"] {
+        background: #0f172a !important;
+        border: 2px solid #0284c7 !important;
+        border-radius: 18px !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
+        width: 380px !important;
+        max-width: 90vw !important;
+        padding: 16px !important;
     }
     </style>
     """,
@@ -288,10 +321,9 @@ def get_friendly_agent_response(user_msg: str) -> str:
     if any(k in q for k in ["how to use", "kaise use krein", "tareeqa", "help", "madad"]):
         return (
             "💡 **Aasan Tareeqa (How to Use):**\n\n"
-            "1. **'Generate Password' tab** main jaein.\n"
-            "2. Apni marzi ka type select karein (Super Strong, Easy to Remember, ya PIN).\n"
-            "3. **'Generate New Password'** button dabayein.\n"
-            "4. Password ke neechay diye gaye **Copy Box** se ek click par copy karein!"
+            "1. **'Password Type'** select karein (Super Strong, Easy Words, ya PIN).\n"
+            "2. **'Generate Password'** button dabayein.\n"
+            "3. Password box ke neechay click karke **instant copy** karein!"
         )
 
     if any(k in q for k in ["tips", "best practice", "strong password", "kaisa hona chahiye"]):
@@ -307,15 +339,15 @@ def get_friendly_agent_response(user_msg: str) -> str:
         return (
             "🔢 **Secure PIN Advice:**\n\n"
             "Phone aur ATM ke liye hamesha random PIN use karein jaise `839174`.\n"
-            "Kabhi bhi `1234`, `0000`, ya apni birth year (jaise `2002`) PIN na rakhein!"
+            "Kabhi bhi `1234`, `0000`, ya apni birth year PIN na rakhein!"
         )
 
     if any(k in q for k in ["entropy", "math", "technical", "csprng"]):
         return (
-            "📊 **Technical Information:**\n\n"
+            "📊 **Technical Specifications:**\n\n"
             "- **CSPRNG:** Python ka `secrets` module use hota hai jo unhackable random numbers deta hai.\n"
             "- **Entropy:** Password ki unpredictability ko bits main calculate karta hai ($E = L \\times \\log_2(R)$).\n"
-            "- **Standard:** NIST SP 800-63B aur OWASP guidelines ke mutabiq certified hai."
+            "- **Standard:** NIST SP 800-63B aur OWASP guidelines certified."
         )
 
     return (
@@ -324,8 +356,7 @@ def get_friendly_agent_response(user_msg: str) -> str:
         "- *'Is this website safe?'*\n"
         "- *'How to create a strong password?'*\n"
         "- *'Who is the developer of this project?'*\n"
-        "- *'ATM ya phone ke liye safe PIN konsi hai?'*\n\n"
-        "Bataiye main aapki mazeed kya madad karoon?"
+        "- *'ATM ya phone ke liye safe PIN konsi hai?'*"
     )
 
 
@@ -343,9 +374,8 @@ if "messages" not in st.session_state:
         {
             "role": "assistant",
             "content": (
-                "👋 **Assalam-o-Alaikum / Hello!** Main hoon **CipherSentinel AI**.\n\n"
-                "Main aapka 24/7 personal cybersecurity helper hoon. Aap asaan alfaz main mujh se kisi bhi "
-                "cheez ke baray main pooch sakte hain (password safety, tips, ya is website ki details)!"
+                "👋 **Hello!** Main hoon **CipherSentinel AI**.\n\n"
+                "Aap mujh se password safety, tips, ya is website ki details asaan alfaz main pooch sakte hain!"
             ),
         }
     ]
@@ -365,10 +395,10 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
     st.markdown("## 🛡️ **CipherSentinel**")
-    st.markdown("<div class='helper-text'>Your Smart Cybersecurity Assistant</div>", unsafe_allow_html=True)
+    st.markdown("<div class='helper-text'>Your Smart Cybersecurity Suite</div>", unsafe_allow_html=True)
     st.divider()
 
-    st.markdown("### 📋 **Quick Password History**")
+    st.markdown("### 📋 **Recent Passwords**")
     if st.session_state.recent_passwords:
         for idx, p in enumerate(reversed(st.session_state.recent_passwords[-4:])):
             st.code(p, language="text")
@@ -391,7 +421,7 @@ with st.sidebar:
 
 
 # ==============================================================================
-# 7. MAIN HEADER
+# 7. MAIN HEADER & TABS
 # ==============================================================================
 st.markdown(
     """
@@ -400,21 +430,19 @@ st.markdown(
         100% Safe &bull; Zero Data Saved &bull; Instant Copy
     </div>
     <div class="hero-title">CipherSentinel AI Password Studio</div>
-    <div class="hero-subtitle">Generate uncrackable passwords in 1-click & get 24/7 guidance from our Cybersecurity AI Agent.</div>
+    <div class="hero-subtitle">Generate unhackable passwords in 1-click & get 24/7 live guidance from our Cybersecurity AI Agent.</div>
     """,
     unsafe_allow_html=True,
 )
 
-# 3 User-Friendly Tabs
-tab_gen, tab_chat, tab_specs = st.tabs([
-    "🔑 Generate Password",
-    "💬 24/7 AI Security Helper",
-    "📊 Technical Specs (For Devs)",
+tab_gen, tab_specs = st.tabs([
+    "🔑 Password Studio",
+    "📊 Technical Specs & Architecture (For Devs)",
 ])
 
 
 # ------------------------------------------------------------------------------
-# TAB 1: GENERATE PASSWORD (SIMPLE & INTUITIVE FOR NON-TECHNICAL USERS)
+# TAB 1: PASSWORD STUDIO
 # ------------------------------------------------------------------------------
 with tab_gen:
     col_left, col_right = st.columns([1.1, 1], gap="large")
@@ -525,49 +553,11 @@ with tab_gen:
 
 
 # ------------------------------------------------------------------------------
-# TAB 2: 24/7 AI HELPER (CHATBOT)
-# ------------------------------------------------------------------------------
-with tab_chat:
-    st.markdown("### 💬 **CipherSentinel AI - 24/7 Security Helper**")
-    st.markdown("<div class='helper-text'>Aap asaan Urdu ya English main password aur security ke mutaliq koi bhi sawaal pooch sakte hain.</div>", unsafe_allow_html=True)
-
-    # Friendly quick questions for non-technical users
-    st.markdown("###### 💡 Asaan Sawaalat (Quick Questions):")
-    b1, b2, b3, b4 = st.columns(4)
-    quick_query = None
-
-    if b1.button("🔒 Kya ye safe hai?", use_container_width=True):
-        quick_query = "Kya ye website safe hai aur passwords save krti hai?"
-    if b2.button("🛡️ Strong password tips", use_container_width=True):
-        quick_query = "Strong password banane ke best tips kya hain?"
-    if b3.button("📱 Mobile/ATM PIN advice", use_container_width=True):
-        quick_query = "ATM ya phone ke liye safe PIN advice kya hai?"
-    if b4.button("👨‍💻 Who developed this?", use_container_width=True):
-        quick_query = "Who is the developer of this project?"
-
-    # Render Chat History
-    for m in st.session_state.messages:
-        with st.chat_message(m["role"], avatar="🛡️" if m["role"] == "assistant" else "👤"):
-            st.markdown(m["content"])
-
-    # Chat Input
-    typed_msg = st.chat_input("Apna sawaal yahan likhein (e.g. How to use this, Is this safe?)...")
-
-    msg_to_send = quick_query or typed_msg
-
-    if msg_to_send:
-        st.session_state.messages.append({"role": "user", "content": msg_to_send})
-        bot_reply = get_friendly_agent_response(msg_to_send)
-        st.session_state.messages.append({"role": "assistant", "content": bot_reply})
-        st.rerun()
-
-
-# ------------------------------------------------------------------------------
-# TAB 3: TECHNICAL SPECS (FOR RECRUITERS & DEVELOPERS)
+# TAB 2: TECHNICAL SPECS (FOR RECRUITERS & DEVELOPERS)
 # ------------------------------------------------------------------------------
 with tab_specs:
     st.markdown("### 📊 **System Architecture & Cryptographic Audit**")
-    st.markdown("<div class='helper-text'>Detailed engineering specifications for technical evaluation and recruiters.</div>", unsafe_allow_html=True)
+    st.markdown("<div class='helper-text'>Detailed engineering specifications for technical evaluation and portfolio recruiters.</div>", unsafe_allow_html=True)
 
     t_col1, t_col2 = st.columns(2)
     with t_col1:
@@ -579,7 +569,7 @@ with tab_specs:
             - **Shuffling:** Fisher-Yates shuffle with `secrets.randbelow`
             - **Shannon Entropy Formula:**
               $$E = L \\times \\log_2(R)$$
-              *(Where $L$ is length and $R$ is character set size)*
+              *(Where $L$ is length and $R$ is character set cardinality)*
             """
         )
     with t_col2:
@@ -604,14 +594,72 @@ with tab_specs:
             Engine -->|Kernel Entropy| OS[(OS Entropy Pool)]
             Engine -->|Calculates Entropy| Metrics[📊 Shannon Entropy & Crack Estimator]
             Metrics --> UI
-            User <-->|24/7 Inquiries| AI[🤖 CipherSentinel AI Helper]
+            User <-->|24/7 Corner Chatbot| AI[🤖 CipherSentinel AI Helper]
         ```
         """
     )
 
 
 # ==============================================================================
-# 8. FOOTER
+# 8. FLOATING CORNER CHATBOT (LIKE MODERN WEBSITES)
+# ==============================================================================
+with st.popover("💬 Chat with AI Agent", help="Click to open 24/7 Cybersecurity AI Assistant"):
+    st.markdown(
+        """
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #334155; padding-bottom: 8px; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 1.4rem;">🤖</span>
+                <div>
+                    <div style="font-weight: 800; color: #ffffff; font-size: 1.05rem;">CipherSentinel AI</div>
+                    <div style="font-size: 0.78rem; color: #34d399; font-weight: 700;">🟢 Online 24/7 &bull; Instant Support</div>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Quick Prompt Chips inside corner chat
+    chip_col1, chip_col2 = st.columns(2)
+    quick_choice = None
+    if chip_col1.button("🔒 Safe hai?", use_container_width=True):
+        quick_choice = "Kya ye website safe hai aur passwords save krti hai?"
+    if chip_col2.button("🛡️ Strong Tips", use_container_width=True):
+        quick_choice = "Strong password banane ke best tips kya hain?"
+
+    chip_col3, chip_col4 = st.columns(2)
+    if chip_col3.button("📱 PIN Advice", use_container_width=True):
+        quick_choice = "ATM ya phone ke liye safe PIN advice kya hai?"
+    if chip_col4.button("👨‍💻 Developer", use_container_width=True):
+        quick_choice = "Who is the developer of this project?"
+
+    # Scrollable Chat Container
+    chat_box = st.container(height=260)
+    with chat_box:
+        for m in st.session_state.messages:
+            with st.chat_message(m["role"], avatar="🛡️" if m["role"] == "assistant" else "👤"):
+                st.markdown(m["content"])
+
+    # Chat Input inside popover
+    chat_prompt = st.chat_input("Poochhein (e.g. Is this safe?)...", key="corner_chat_input")
+
+    selected_prompt = quick_choice or chat_prompt
+
+    if selected_prompt:
+        st.session_state.messages.append({"role": "user", "content": selected_prompt})
+        bot_response = get_friendly_agent_response(selected_prompt)
+        st.session_state.messages.append({"role": "assistant", "content": bot_response})
+        st.rerun()
+
+    if st.button("🗑️ Clear Chat", use_container_width=True):
+        st.session_state.messages = [
+            {"role": "assistant", "content": "👋 Chat reset! Main aapki kya madad kar sakta hoon?"}
+        ]
+        st.rerun()
+
+
+# ==============================================================================
+# 9. FOOTER
 # ==============================================================================
 st.markdown("---")
 st.markdown(
