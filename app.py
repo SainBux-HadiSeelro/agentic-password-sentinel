@@ -118,36 +118,48 @@ st.markdown(
     }
 
     /* =========================================================================
-       FLOATING CORNER CHATBOT WIDGET (LIKE MODERN WEBSITES)
+       FLOATING CORNER CHATBOT CIRCULAR BUTTON (LIKE MODERN WEBSITES)
        ========================================================================= */
     div[data-testid="stPopover"] {
         position: fixed !important;
         bottom: 28px !important;
         right: 28px !important;
         z-index: 999999 !important;
+        width: 64px !important;
+        height: 64px !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     div[data-testid="stPopover"] > button {
+        width: 64px !important;
+        height: 64px !important;
+        min-width: 64px !important;
+        min-height: 64px !important;
+        border-radius: 50% !important;
         background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%) !important;
         color: #ffffff !important;
-        border-radius: 50px !important;
-        padding: 13px 24px !important;
-        font-size: 1.02rem !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.02em !important;
-        border: 2px solid #38bdf8 !important;
-        box-shadow: 0 8px 30px rgba(2, 132, 199, 0.55) !important;
-        display: inline-flex !important;
+        border: 2.5px solid #38bdf8 !important;
+        box-shadow: 0 8px 30px rgba(2, 132, 199, 0.6) !important;
+        display: flex !important;
         align-items: center !important;
-        gap: 8px !important;
+        justify-content: center !important;
+        padding: 0 !important;
         cursor: pointer !important;
-        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        transition: transform 0.25s ease, box-shadow 0.25s ease !important;
     }
 
     div[data-testid="stPopover"] > button:hover {
-        transform: translateY(-2px) scale(1.02) !important;
-        box-shadow: 0 12px 35px rgba(2, 132, 199, 0.75) !important;
+        transform: scale(1.1) translateY(-3px) !important;
+        box-shadow: 0 12px 35px rgba(2, 132, 199, 0.85) !important;
         border-color: #7dd3fc !important;
+    }
+
+    div[data-testid="stPopover"] > button p {
+        font-size: 1.8rem !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
     }
 
     div[data-testid="stPopoverBody"] {
@@ -603,7 +615,7 @@ with tab_specs:
 # ==============================================================================
 # 8. FLOATING CORNER CHATBOT (LIKE MODERN WEBSITES)
 # ==============================================================================
-with st.popover("💬 Chat with AI Agent", help="Click to open 24/7 Cybersecurity AI Assistant"):
+with st.popover("💬", help="Click to chat with 24/7 AI Cybersecurity Assistant"):
     st.markdown(
         """
         <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #334155; padding-bottom: 8px; margin-bottom: 12px;">
