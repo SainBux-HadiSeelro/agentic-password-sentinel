@@ -145,39 +145,41 @@ st.markdown(
        EXCLUSIVE CORNER AGENT WIDGET: "Sentinel AI Agent is Online • Tap here!"
        (STRICTLY FIXED TO BROWSER VIEWPORT CORNER WITH RADAR PULSE ANIMATION)
        ========================================================================= */
-    [data-testid="stAppViewBlockContainer"] {
-        contain: none !important;
-    }
-    .main {
-        contain: none !important;
-    }
+    [data-testid="stMain"],
+    [data-testid="stAppViewContainer"],
+    [data-testid="stAppViewBlockContainer"],
+    section.main,
+    .block-container,
     .stApp {
         contain: none !important;
+        transform: none !important;
+        perspective: none !important;
+        filter: none !important;
     }
 
-    div:has(> div[data-testid="stPopover"]) {
+    .stPopover,
+    [data-testid="stPopover"] {
         position: fixed !important;
         bottom: 26px !important;
         right: 26px !important;
-        z-index: 9999999 !important;
+        z-index: 99999999 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: auto !important;
+    }
+
+    div[data-testid="stElementContainer"]:has(.stPopover),
+    div[data-testid="stElementContainer"]:has([data-testid="stPopover"]) {
         height: 0 !important;
         min-height: 0 !important;
         margin: 0 !important;
         padding: 0 !important;
-        width: auto !important;
-        pointer-events: none !important;
     }
 
-    div[data-testid="stPopover"] {
-        position: fixed !important;
-        bottom: 26px !important;
-        right: 26px !important;
-        z-index: 9999999 !important;
-        pointer-events: auto !important;
-    }
-
-    div[data-testid="stPopover"] > button {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.97) 0%, rgba(30, 41, 59, 0.97) 100%) !important;
+    .stPopover button,
+    [data-testid="stPopover"] button,
+    [data-testid="stPopoverButton"] {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.98) 100%) !important;
         border: 2px solid #38bdf8 !important;
         border-radius: 50px !important;
         padding: 12px 24px !important;
@@ -187,6 +189,7 @@ st.markdown(
         cursor: pointer !important;
         animation: agentRadarWave 2.8s ease-in-out infinite !important;
         backdrop-filter: blur(14px) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.6) !important;
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
@@ -205,13 +208,18 @@ st.markdown(
         }
     }
 
-    div[data-testid="stPopover"] > button:hover {
+    .stPopover button:hover,
+    [data-testid="stPopover"] button:hover,
+    [data-testid="stPopoverButton"]:hover {
         transform: scale(1.06) translateY(-6px) !important;
         border-color: #ffffff !important;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 1), 0 0 40px rgba(56, 189, 248, 1) !important;
     }
 
-    div[data-testid="stPopover"] > button p {
+    .stPopover button p,
+    .stPopover button span,
+    [data-testid="stPopover"] button p,
+    [data-testid="stPopoverButton"] p {
         color: #ffffff !important;
         font-size: 0.95rem !important;
         font-weight: 800 !important;
@@ -563,66 +571,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ==============================================================================
-# FLOATING CORNER AGENT TRIGGER (STRICTLY CORNER VIEWPORT - ZERO BOTTOM FOOTPRINT)
-# ==============================================================================
-with st.popover("🟢 Sentinel AI Agent is Online • Tap here! ✨", help="Click to open CipherSentinel AI Agent (24/7 Live Support)"):
-    st.markdown(
-        """
-        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95)); border: 2px solid #38bdf8; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 2rem; filter: drop-shadow(0 0 10px #38bdf8);">🤖</span>
-                    <div>
-                        <div style="font-weight: 800; color: #ffffff; font-size: 1.05rem; letter-spacing: 0.04em;">CIPHERSENTINEL AI AGENT</div>
-                        <div style="font-size: 0.75rem; color: #38bdf8; font-family: monospace;">PROTOCOL: v2.5 &bull; ONLINE 24/7</div>
-                    </div>
-                </div>
-                <span style="background: rgba(16, 185, 129, 0.25); border: 1.5px solid #10b981; color: #34d399; font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 50px;">LIVE</span>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    # Agent Quick Actions
-    chip_col1, chip_col2 = st.columns(2)
-    quick_choice = None
-    if chip_col1.button("🔒 Zero-Knowledge?", use_container_width=True):
-        quick_choice = "Kya ye website safe hai aur passwords save krti hai?"
-    if chip_col2.button("🛡️ Defense Directives", use_container_width=True):
-        quick_choice = "Strong password banane ke best tips kya hain?"
-
-    chip_col3, chip_col4 = st.columns(2)
-    if chip_col3.button("📱 Mobile PIN Spec", use_container_width=True):
-        quick_choice = "ATM ya phone ke liye safe PIN advice kya hai?"
-    if chip_col4.button("👨‍💻 Architect Info", use_container_width=True):
-        quick_choice = "Who is the developer of this project?"
-
-    # Scrollable Chat Container
-    chat_box = st.container(height=260)
-    with chat_box:
-        for m in st.session_state.messages:
-            with st.chat_message(m["role"], avatar="🤖" if m["role"] == "assistant" else "👤"):
-                st.markdown(m["content"])
-
-    # Chat Input inside popover
-    chat_prompt = st.chat_input("Ask Sentinel Agent (e.g. Is this safe?)...", key="corner_single_agent_input")
-
-    selected_prompt = quick_choice or chat_prompt
-
-    if selected_prompt:
-        st.session_state.messages.append({"role": "user", "content": selected_prompt})
-        bot_response = get_friendly_agent_response(selected_prompt)
-        st.session_state.messages.append({"role": "assistant", "content": bot_response})
-        st.rerun()
-
-    if st.button("🗑️ Purge Agent Memory", use_container_width=True):
-        st.session_state.messages = [
-            {"role": "assistant", "content": "🤖 Memory purged. Ready for fresh queries!"}
-        ]
-        st.rerun()
-
 tab_gen, tab_specs = st.tabs([
     "🔑 Password Studio",
     "📊 Technical Specs & Architecture (For Devs)",
@@ -801,3 +749,63 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+# ==============================================================================
+# 9. FLOATING CORNER AGENT POPUP (STRICTLY VIEWPORT CORNER PINNED)
+# ==============================================================================
+with st.popover("🟢 Sentinel AI Agent is Online • Tap here! ✨", help="Click to open CipherSentinel AI Agent (24/7 Live Support)"):
+    st.markdown(
+        """
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95)); border: 2px solid #38bdf8; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 2rem; filter: drop-shadow(0 0 10px #38bdf8);">🤖</span>
+                    <div>
+                        <div style="font-weight: 800; color: #ffffff; font-size: 1.05rem; letter-spacing: 0.04em;">CIPHERSENTINEL AI AGENT</div>
+                        <div style="font-size: 0.75rem; color: #38bdf8; font-family: monospace;">PROTOCOL: v2.5 &bull; ONLINE 24/7</div>
+                    </div>
+                </div>
+                <span style="background: rgba(16, 185, 129, 0.25); border: 1.5px solid #10b981; color: #34d399; font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 50px;">LIVE</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Agent Quick Actions
+    chip_col1, chip_col2 = st.columns(2)
+    quick_choice = None
+    if chip_col1.button("🔒 Zero-Knowledge?", use_container_width=True):
+        quick_choice = "Kya ye website safe hai aur passwords save krti hai?"
+    if chip_col2.button("🛡️ Defense Directives", use_container_width=True):
+        quick_choice = "Strong password banane ke best tips kya hain?"
+
+    chip_col3, chip_col4 = st.columns(2)
+    if chip_col3.button("📱 Mobile PIN Spec", use_container_width=True):
+        quick_choice = "ATM ya phone ke liye safe PIN advice kya hai?"
+    if chip_col4.button("👨‍💻 Architect Info", use_container_width=True):
+        quick_choice = "Who is the developer of this project?"
+
+    # Scrollable Chat Container
+    chat_box = st.container(height=260)
+    with chat_box:
+        for m in st.session_state.messages:
+            with st.chat_message(m["role"], avatar="🤖" if m["role"] == "assistant" else "👤"):
+                st.markdown(m["content"])
+
+    # Chat Input inside popover
+    chat_prompt = st.chat_input("Ask Sentinel Agent (e.g. Is this safe?)...", key="corner_single_agent_input")
+
+    selected_prompt = quick_choice or chat_prompt
+
+    if selected_prompt:
+        st.session_state.messages.append({"role": "user", "content": selected_prompt})
+        bot_response = get_friendly_agent_response(selected_prompt)
+        st.session_state.messages.append({"role": "assistant", "content": bot_response})
+        st.rerun()
+
+    if st.button("🗑️ Purge Agent Memory", use_container_width=True):
+        st.session_state.messages = [
+            {"role": "assistant", "content": "🤖 Memory purged. Ready for fresh queries!"}
+        ]
+        st.rerun()
